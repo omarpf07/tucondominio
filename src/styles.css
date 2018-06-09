@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'assets/styles/bootstrap.min.css';
+@import 'assets/styles/animate.css';
+@import 'assets/fonts/fonts.css';
+
+h1,h2,h3,h4,h5,h6{
+    font-family: robotoTitle !important;
+}
+
+.lead{
+    font-family: robotoMedium !important;
+}
+
+p,a,span,label{
+    font-family: robotoNormal !important;
+}
+
+.my_link{
+    cursor: pointer;
+}
+
+body{ 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}

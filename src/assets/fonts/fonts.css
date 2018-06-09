@@ -1,0 +1,14 @@
+@font-face {
+    font-family: robotoTitle;
+    src: url(Roboto-Black.ttf);
+}
+
+@font-face {
+    font-family: robotoNormal;
+    src: url(Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: robotoMedium;
+    src: url(Roboto-Medium.ttf);
+}
