@@ -11,6 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 
 import { APP_ROUTING } from './app.routes';
 
+
+import {TableModule} from 'primeng/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,8 @@ import { APP_ROUTING } from './app.routes';
   ],
   imports: [
     BrowserModule,
-    APP_ROUTING
+    APP_ROUTING,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
