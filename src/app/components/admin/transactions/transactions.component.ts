@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
-
+  public addTransaction = false;
   constructor() { }
 
   ngOnInit() {

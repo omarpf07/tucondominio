@@ -1,3 +1,46 @@
-<p>
-  transactions works!
-</p>
+<div class="row" *ngIf="!addTransaction">
+  <div class="col-md">
+    <div class="row">
+      <div class="col-md">
+        <div class="w-100 pt-3">
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Gastos del condominio</h3>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-primary float-right" (click)="addTransaction = true">Registrar Gasto</button>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1 bg-primary">
+        Tabla
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row h-100 animated fadeIn" *ngIf="addTransaction">
+  <div class="col-md-6 offset-md-3">
+    <div class="d-flex w-100 h-100 align-items-center justify-content-center">
+      <form class="w-100">
+        <h5 class="text-center">Datos del Nuevo Usuario</h5>
+        <div class="form-group row">
+          <div class="col-md">
+            <label for="exampleFormControlInput1">Monto Gastado</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="1000000">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md">
+            <p-calendar tabindex="0" [disabledDates]="invalidDates" [disabledDays]="[0,6]" readonlyInput="true"></p-calendar>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 text-center">Añadir Gasto</button>
+      </form>
+    </div>
+  </div>
+</div>

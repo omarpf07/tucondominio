@@ -10,7 +10,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { TransactionsComponent } from './components/admin/transactions/transactions.component';
 import { FeepaymentComponent } from './components/fees/feepayment/feepayment.component';
 
@@ -18,10 +17,11 @@ import { UsersmanagementComponent } from './components/admin/usersmanagement/use
 import { PaymentverifyComponent } from './components/admin/paymentverify/paymentverify.component';
 import { ViewfeeComponent } from './components/fees/viewfee/viewfee.component';
 
-
+import {CalendarModule} from 'primeng/calendar';
 import { APP_ROUTING } from './app.routes';
 import { MovementsComponent } from './components/movements/movements.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -33,7 +33,6 @@ import { MovementsComponent } from './components/movements/movements.component';
     AdminComponent,
     ProfileComponent,
     LoginComponent,
-    NotificationsComponent,
     PaymentverifyComponent,
     TransactionsComponent,
     UsersmanagementComponent,
@@ -44,7 +43,9 @@ import { MovementsComponent } from './components/movements/movements.component';
   imports: [
     BrowserModule,
     APP_ROUTING,
-    TableModule
+    TableModule,
+    CalendarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

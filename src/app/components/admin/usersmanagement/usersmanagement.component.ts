@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usersmanagement.component.css']
 })
 export class UsersmanagementComponent implements OnInit {
-
+  public addUser = false;
   constructor() { }
 
   ngOnInit() {
