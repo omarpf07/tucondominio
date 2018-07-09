@@ -16,6 +16,7 @@ const routes: Routes = [
     { path: 'profile/:id', component: ProfileComponent },
     { path: 'admin', component: AdminComponent },
     { path: 'movements', component: MovementsComponent },
+    { path: 'admin/panel', component: AdminComponent },
     { path: 'admin/paymentverify', component: PaymentverifyComponent },
     { path: 'admin/transactions', component: TransactionsComponent },
     { path: 'admin/usersmanagement', component: UsersmanagementComponent },
