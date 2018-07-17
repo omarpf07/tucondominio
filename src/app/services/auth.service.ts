@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from './shared.service';
-import { IUser } from '../beans';
+import { User } from '../beans';
 
 const STORAGE_KEY = 'tc-manager-jwt';
 
@@ -94,7 +94,7 @@ export class AuthService {
     localStorage.setItem(CONTRACT_KEY, id);
   }
 
-  setAllUserData(user: IUser) {
+  setAllUserData(user: User) {
     this.setToken(`${Math.floor(Math.random() * 1000)}`);
     this.setUserName(user.nombre);
     // this.setUserCondominiumId(user.condominiumId.toString());

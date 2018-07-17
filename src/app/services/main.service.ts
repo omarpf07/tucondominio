@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { IUser } from '../beans';
+import { map, catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,12 @@ export class MainService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(`localhost:4000/api/users/all`);
+    return this.http.get(`localhost:4000/api/users/all`).pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
+  getUser(email: string, pass: string): Observable<IUser> {
+    return this.http.get(`localhost:4000/api/users/login?email=${email}&contraseña=${pass}`)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
   private handleErrorObservable(error: HttpErrorResponse) {
@@ -28,5 +35,10 @@ export class MainService {
 
   private getHeaders() {
     return { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  }
+
+  private extractData(res) {
+    const body = res;
+    return body;
   }
 }
