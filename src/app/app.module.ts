@@ -1,6 +1,7 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 
 
 import { AppComponent } from './app.component';
@@ -12,16 +13,20 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { TransactionsComponent } from './components/admin/transactions/transactions.component';
 import { FeepaymentComponent } from './components/fees/feepayment/feepayment.component';
-
+import { MovementsComponent } from './components/movements/movements.component';
 import { UsersmanagementComponent } from './components/admin/usersmanagement/usersmanagement.component';
 import { PaymentverifyComponent } from './components/admin/paymentverify/paymentverify.component';
 import { ViewfeeComponent } from './components/fees/viewfee/viewfee.component';
-
-import {CalendarModule} from 'primeng/calendar';
 import { APP_ROUTING } from './app.routes';
-import { MovementsComponent } from './components/movements/movements.component';
 
+import { HttpClientModule } from '@angular/common/http'; 
+import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MainService } from './services/main.service';
+import { AuthService } from './services/auth.service';
+import { SharedService } from './services/shared.service';
 
 
 @NgModule({
@@ -45,9 +50,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     APP_ROUTING,
     TableModule,
     CalendarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService, MainService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

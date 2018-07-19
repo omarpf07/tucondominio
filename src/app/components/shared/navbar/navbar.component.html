@@ -1,37 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 5vh;">
   <a class="navbar-brand">Tucondominio</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-    aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <span *ngIf="isLoggedIn">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </span>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/home">Inicio
-        </a>
-      </li>
-      <li class="nav-item dropdown my_link" routerLinkActive="active">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Usuario
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/feepayment">Pagar Cuota</a>
-          <a class="dropdown-item" routerLink="/movements">Movimientos del condominio</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown my_link" routerLinkActive="active">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Administrador
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <span *ngIf="isLoggedIn">
+      <ul class="navbar-nav">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/home">Inicio
+          </a>
+        </li>
+        <li class="nav-item dropdown my_link" routerLinkActive="active">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuario
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/feepayment">Pagar Cuota</a>
+            <a class="dropdown-item" routerLink="/movements">Movimientos del condominio</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown my_link" routerLinkActive="active" *ngIf="isAdmin">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Administrador
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" routerLink="/admin/panel">Panel de administracion</a>
             <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="/admin/paymentverify">Verificar Pagos</a>
-          <a class="dropdown-item" routerLink="/admin/transactions">Gastos</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="/admin/usersmanagement">Administrar usuarios</a>
-        </div>
-      </li>
-    </ul>
+            <a class="dropdown-item" routerLink="/admin/paymentverify">Verificar Pagos</a>
+            <a class="dropdown-item" routerLink="/admin/transactions">Gastos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/admin/usersmanagement">Administrar usuarios</a>
+          </div>
+        </li>
+        <li class="nav-item">Cerrar Sesion</li>
+      </ul>
+    </span>
   </div>
 </nav>

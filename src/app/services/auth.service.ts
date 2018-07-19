@@ -58,7 +58,7 @@ export class AuthService {
     return localStorage.getItem(DISPLAYNAME_KEY);
   }
 
-  isAdmin(admin: boolean) {
+  isAdmin(admin?: boolean) {
     if (admin !== undefined) {
       localStorage.setItem(ISADMIN_KEY, admin.toString());
     } else {
