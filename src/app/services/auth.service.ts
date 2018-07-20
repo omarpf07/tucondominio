@@ -14,7 +14,9 @@ const CONDOMINIUM_KEY = 'tc-user-login-key-condominium';
 const CONTRACT_KEY = 'tc-user-login-key-condominium';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   public isLoggedInBehavior = new BehaviorSubject(false);
   public observableLogIn = this.isLoggedInBehavior.asObservable();

@@ -10,20 +10,20 @@ import { FeepaymentComponent } from './components/fees/feepayment/feepayment.com
 import { MovementsComponent } from './components/movements/movements.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NotAuthGuard } from './services/not-auth.guard';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
-    { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent, canActivate: [NotAuthGuard] },
-    { path: 'profile/:id', component: ProfileComponent, canActivate: [NotAuthGuard] },
-    { path: 'admin', component: AdminComponent, canActivate: [NotAuthGuard] },
-    { path: 'movements', component: MovementsComponent, canActivate: [NotAuthGuard] },
-    { path: 'admin/panel', component: AdminComponent, canActivate: [NotAuthGuard] },
-    { path: 'admin/paymentverify', component: PaymentverifyComponent, canActivate: [NotAuthGuard] },
-    { path: 'admin/transactions', component: TransactionsComponent, canActivate: [NotAuthGuard] },
-    { path: 'admin/usersmanagement', component: UsersmanagementComponent, canActivate: [NotAuthGuard] },
-    { path: 'feepayment', component: FeepaymentComponent, canActivate: [NotAuthGuard] },
-    { path: 'fee/:id', component: ViewfeeComponent, canActivate: [NotAuthGuard] },
-    { path: '', pathMatch: 'full', redirectTo: 'home' }
+    { path: 'login', component: LoginComponent, canActivate: [NotAuthGuard] },
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] },
+    { path: 'movements', component: MovementsComponent, canActivate: [AuthGuard] },
+    { path: 'admin/panel', component: AdminComponent, canActivate: [AuthGuard] },
+    { path: 'admin/paymentverify', component: PaymentverifyComponent, canActivate: [AuthGuard] },
+    { path: 'admin/transactions', component: TransactionsComponent, canActivate: [AuthGuard] },
+    { path: 'admin/usersmanagement', component: UsersmanagementComponent, canActivate: [AuthGuard] },
+    { path: 'feepayment', component: FeepaymentComponent, canActivate: [AuthGuard] },
+    { path: 'fee/:id', component: ViewfeeComponent, canActivate: [AuthGuard] },
+    { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];
 
 

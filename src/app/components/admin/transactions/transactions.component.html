@@ -4,10 +4,15 @@
       <div class="col-md">
         <div class="w-100 pt-3">
           <div class="row">
-            <div class="col-md-6">
-              <h3>Gastos del condominio</h3>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-primary" (click)="getBack()">
+                <i class="fas fa-arrow-left"></i> Atras
+              </button>
             </div>
             <div class="col-md-6">
+              <h3 class="text-center">Gastos del condominio</h3>
+            </div>
+            <div class="col-md-3">
               <button type="button" class="btn btn-primary float-right" (click)="addTransaction = true">Registrar Gasto</button>
             </div>
           </div>
@@ -55,7 +60,7 @@
   <div class="col-md-6 offset-md-3">
     <div class="d-flex w-100 h-100 align-items-center justify-content-center">
       <form class="w-100">
-        <h5 class="text-center">Datos del Nuevo Usuario</h5>
+        <h5 class="text-center">Datos del Nuevo Gasto</h5>
         <div class="form-group row">
           <div class="col-md">
             <label for="exampleFormControlInput1">Monto Gastado</label>

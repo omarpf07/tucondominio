@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { throwError, Observable } from 'rxjs';
 import { IUser } from '../beans';
 import { map, catchError } from 'rxjs/operators';
+import { ICondominium } from '../beans/interfaces/condominium';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,11 @@ export class MainService {
 
   logIn(email: string, pass: string): Observable<IUser> {
     return this.http.get(`http://192.168.1.4:4010/api/users/login?email=${email}&contraseña=${pass}`)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
+  getCondo(): Observable<ICondominium> {
+    return this.http.get(`http://192.168.1.4:4010/api/condominio/all`)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 

@@ -4,10 +4,15 @@
       <div class="col-md">
         <div class="w-100 pt-3">
           <div class="row">
-            <div class="col-md-6">
-              <h3>Usuarios del condominio</h3>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-primary" (click)="getBack()">
+                <i class="fas fa-arrow-left"></i> Atras
+              </button>
             </div>
             <div class="col-md-6">
+              <h3 class="text-center">Usuarios del condominio</h3>
+            </div>
+            <div class="col-md-3">
               <button type="button" class="btn btn-primary float-right" (click)="addUser = true">Registrar Usuario</button>
             </div>
           </div>
@@ -46,6 +51,8 @@
   <div class="col-md-6 offset-md-3">
     <div class="d-flex w-100 h-100 align-items-center justify-content-center">
       <form class="w-100" [formGroup]="userCreationForm" (ngSubmit)="createUser()">
+        <button type="button" class="btn btn-primary" (click)="addUser = false">
+          <i class="fas fa-arrow-left"></i> Atras</button>
         <h5 class="text-center">Datos del Nuevo Usuario</h5>
         <div class="form-group row">
           <div class="col-md-6">
@@ -53,8 +60,8 @@
             <input type="email" class="form-control" formControlName="email" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
           </div>
           <div class="invalid-feedback" *ngIf="userCreationForm.controls['firstName'].invalid">
-              Please choose a username
-            </div>
+            Please choose a username
+          </div>
           <div class="col-md-6">
             <label for="exampleFormControlInput2">Contraseña *</label>
             <input type="text" class="form-control" formControlName="password" id="exampleFormControlInput2" placeholder="Contraseña mas de tres digitos">

@@ -22,13 +22,49 @@ import { APP_ROUTING } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CovalentLayoutModule } from '@covalent/core/layout';
+import { CovalentStepsModule } from '@covalent/core/steps';
+/* any other core modules */
+// (optional) Additional Covalent Modules imports
+import { CovalentHttpModule } from '@covalent/http';
+import { CovalentHighlightModule } from '@covalent/highlight';
+import { CovalentMarkdownModule } from '@covalent/markdown';
 
-import { MainService } from './services/main.service';
-import { AuthService } from './services/auth.service';
-import { SharedService } from './services/shared.service';
-import { NotAuthGuard } from './services/not-auth.guard';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  } from '@angular/material';
 
 
 @NgModule({
@@ -56,9 +92,45 @@ import { NotAuthGuard } from './services/not-auth.guard';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSmartModalModule.forRoot()
+    CovalentLayoutModule,
+    CovalentStepsModule,
+    CovalentHttpModule,
+    CovalentMarkdownModule,
+    CovalentHighlightModule,
+    MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
   ],
-  providers: [AuthService, MainService, SharedService, NotAuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
