@@ -26,11 +26,13 @@ export class LoginComponent implements OnInit {
   onSubmit(form: FormGroup) {
     const values = form.value;
     this.loginForm.disable();
-      this.mainService.getUser(values.username, values.password).subscribe(data => {
+      this.mainService.logIn(values.username, values.password).subscribe(data => {
         this.auth.setAllUserData(data);
+        this.auth.isLoggedInBehavior.next(true);
         this.router.navigate(['/home']);
       }, error => {
         console.log(error);
+        this.loginForm.enable();
       });
   }
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 5vh;">
+<nav class="navbar navbar-expand-lg navbar-light bg-info w-100" style="height: 5vh;">
   <a class="navbar-brand">Tucondominio</a>
   <span *ngIf="isLoggedIn">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -35,8 +35,15 @@
             <a class="dropdown-item" routerLink="/admin/usersmanagement">Administrar usuarios</a>
           </div>
         </li>
-        <li class="nav-item">Cerrar Sesion</li>
+        <!-- <li class="nav-item">
+          <a class="nav-link">
+            Cerrar Sesion
+          </a>
+        </li> -->
       </ul>
     </span>
   </div>
+  <span class="navbar-text my_link" (click)="logout()" *ngIf="isLoggedIn">
+    Cerrar Sesion 
+  </span>
 </nav>

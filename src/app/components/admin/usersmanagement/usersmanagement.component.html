@@ -20,29 +20,20 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Estado del usuario</th>
+              <th scope="col">Administrador</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
+            <tr *ngFor="let item of users">
+              <th scope="row">{{item.email}}</th>
+              <td>{{item.apellido}}</td>
+              <td>{{item.nombre}}</td>
+              <td>{{item.estado ? 'ACTIVO' : 'INACTIVO'}}</td>
+              <td>{{item.admin ? 'SI' : 'NO'}}</td>
             </tr>
           </tbody>
         </table>
@@ -54,29 +45,43 @@
 <div class="row h-100 animated fadeIn" *ngIf="addUser">
   <div class="col-md-6 offset-md-3">
     <div class="d-flex w-100 h-100 align-items-center justify-content-center">
-      <form class="w-100">
+      <form class="w-100" [formGroup]="userCreationForm" (ngSubmit)="createUser()">
         <h5 class="text-center">Datos del Nuevo Usuario</h5>
         <div class="form-group row">
           <div class="col-md-6">
-            <label for="exampleFormControlInput1">Correo</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+            <label for="exampleFormControlInput1">Correo *</label>
+            <input type="email" class="form-control" formControlName="email" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+          </div>
+          <div class="invalid-feedback" *ngIf="userCreationForm.controls['firstName'].invalid">
+              Please choose a username
+            </div>
+          <div class="col-md-6">
+            <label for="exampleFormControlInput2">Contraseña *</label>
+            <input type="text" class="form-control" formControlName="password" id="exampleFormControlInput2" placeholder="Contraseña mas de tres digitos">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6">
+            <label for="exampleFormControlInput1">Nombre *</label>
+            <input type="text" class="form-control" formControlName="firstName" id="exampleFormControlInput1" placeholder="Escribe tu primer nombre">
           </div>
           <div class="col-md-6">
-            <label for="exampleFormControlInput2">Contraseña</label>
-            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="Contraseña mas de tres digitos">
+            <label for="exampleFormControlInput2">Apellido *</label>
+            <input type="text" class="form-control" formControlName="lastName" id="exampleFormControlInput2" placeholder="Escribe tu primer apellido">
           </div>
         </div>
         <div class="form-group row">
           <div class="col-md">
-            <span>¿El usuario es Administrador?</span>
+            <span>¿El usuario es Administrador? *</span>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+              <input class="form-check-input" type="radio" name="isAdmin" id="exampleRadios1" formControlName="isAdmin" [value]="true"
+                checked>
               <label class="form-check-label" for="exampleRadios1">
                 Si
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <input class="form-check-input" type="radio" name="isAdmin" id="exampleRadios2" formControlName="isAdmin" [value]="false">
               <label class="form-check-label" for="exampleRadios2">
                 No
               </label>
@@ -85,15 +90,13 @@
         </div>
         <div class="form-group row">
           <div class="col-md">
-            <label for="exampleFormControlInput3">Numero de Casa</label>
+            <label for="exampleFormControlInput3">Numero de Casa *</label>
             <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="66-43">
           </div>
         </div>
-        <div class="form-group">
-          <label for="exampleFormControlFile1">Imagen del usuario</label>
-          <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
-        <button type="submit" class="btn btn-primary w-100 text-center">Crear Usuario</button>
+        <button type="submit" class="btn btn-primary w-100 text-center" [disabled]="userCreationForm.invalid">Crear Usuario</button>
+        <button type="button" class="btn btn-danger w-100 text-center mt-1" (click)="addUser = false">Cancelar</button>
+
       </form>
     </div>
   </div>

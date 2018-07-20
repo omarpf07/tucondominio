@@ -12,11 +12,16 @@ export class MainService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<IUser[]> {
-    return this.http.get(`192.168.1.4:4010/api/users/all`).pipe(map(this.extractData), catchError(this.handleErrorObservable));
+    return this.http.get(`http://192.168.1.4:4010/api/users/all`).pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
-  getUser(email: string, pass: string): Observable<IUser> {
-    return this.http.get(`192.168.1.4:4010/api/users/login?email=${email}&contraseña=${pass}`)
+  logIn(email: string, pass: string): Observable<IUser> {
+    return this.http.get(`http://192.168.1.4:4010/api/users/login?email=${email}&contraseña=${pass}`)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
+  createUser(user: IUser) {
+    return this.http.post(`http://192.168.1.4:4010/api/users/add`, user)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 

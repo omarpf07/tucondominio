@@ -12,12 +12,15 @@ export class NavbarComponent implements OnInit {
   public isLoggedIn = false;
   public isAdmin = false;
   ngOnInit() {
-    this.auth.isLoggedIn() ? this.isLoggedIn = true : this.isLoggedIn = false;
-    this.auth.isAdmin() ? this.isAdmin = true : this.isAdmin = false;
+    console.log(this.isAdmin);
+    this.auth.observableLogIn.subscribe(resp => {
+      this.isLoggedIn = resp;
+      this.isAdmin = this.auth.getAdmin();
+    });
   }
 
   logout() {
-    this.isLoggedIn = false;
     this.auth.logout();
+    this.auth.isLoggedInBehavior.next(false);
   }
 }

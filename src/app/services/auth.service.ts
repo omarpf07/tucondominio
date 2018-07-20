@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from './shared.service';
 import { User } from '../beans';
+import { BehaviorSubject } from 'rxjs';
 
 const STORAGE_KEY = 'tc-manager-jwt';
 
@@ -15,11 +16,19 @@ const CONTRACT_KEY = 'tc-user-login-key-condominium';
 
 @Injectable()
 export class AuthService {
+  public isLoggedInBehavior = new BehaviorSubject(false);
+  public observableLogIn = this.isLoggedInBehavior.asObservable();
 
-  constructor(private router: Router, private sharedService: SharedService) { }
+  constructor(private router: Router, private sharedService: SharedService) {
+    this.isLoggedInBehavior.next(this.isLoggedIn());
+  }
 
   isLoggedIn() {
     return this.getToken() !== null;
+  }
+
+  isAdmin(admin?: boolean) {
+    return this.getAdmin() !== null && this.getAdmin();
   }
 
   logout() {
@@ -58,12 +67,8 @@ export class AuthService {
     return localStorage.getItem(DISPLAYNAME_KEY);
   }
 
-  isAdmin(admin?: boolean) {
-    if (admin !== undefined) {
-      localStorage.setItem(ISADMIN_KEY, admin.toString());
-    } else {
-      return +localStorage.getItem(ISADMIN_KEY);
-    }
+  getAdmin() {
+    return JSON.parse(localStorage.getItem(ISADMIN_KEY));
   }
 
   getExpirationAt() {
@@ -90,6 +95,10 @@ export class AuthService {
     localStorage.setItem(DISPLAYNAME_KEY, name);
   }
 
+  setUserAdmin(admin: string) {
+    localStorage.setItem(ISADMIN_KEY, admin);
+  }
+
   setContractId(id: string) {
     localStorage.setItem(CONTRACT_KEY, id);
   }
@@ -99,6 +108,7 @@ export class AuthService {
     this.setUserName(user.nombre);
     // this.setUserCondominiumId(user.condominiumId.toString());
     this.setUserId(user.usuarioId.toString());
-    this.setUserDisplayName(user.nombre + user.apellido);
+    this.setUserDisplayName(user.nombre + ' ' + user.apellido);
+    this.setUserAdmin(user.admin.toString());
   }
 }

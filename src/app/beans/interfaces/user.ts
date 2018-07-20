@@ -6,7 +6,6 @@ export interface IUser {
     contraseña: string;
     admin: boolean;
     estado: boolean;
-    notificacions: any[];
     CuentaMovimiento: any[];
     contratos: any[];
 }

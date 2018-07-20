@@ -9,7 +9,6 @@ export class User implements IUser {
         public contraseña: string,
         public admin: boolean,
         public estado: boolean,
-        public notificacions: any[],
         public CuentaMovimiento: any[],
         public contratos: any[],
     ) { }

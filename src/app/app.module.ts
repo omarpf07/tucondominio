@@ -19,14 +19,16 @@ import { PaymentverifyComponent } from './components/admin/paymentverify/payment
 import { ViewfeeComponent } from './components/fees/viewfee/viewfee.component';
 import { APP_ROUTING } from './app.routes';
 
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MainService } from './services/main.service';
 import { AuthService } from './services/auth.service';
 import { SharedService } from './services/shared.service';
+import { NotAuthGuard } from './services/not-auth.guard';
 
 
 @NgModule({
@@ -53,9 +55,10 @@ import { SharedService } from './services/shared.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSmartModalModule.forRoot()
   ],
-  providers: [AuthService, MainService, SharedService],
+  providers: [AuthService, MainService, SharedService, NotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

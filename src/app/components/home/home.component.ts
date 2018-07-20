@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { IUser } from '../../beans';
+import { MainService } from '../../services/main.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public displayName: string;
+  public users: IUser[];
+  constructor(private auth: AuthService, private mainService: MainService) { }
 
   ngOnInit() {
+    this.displayName = this.auth.getUserDisplayName();
+    this.mainService.getUsers().subscribe(resp => {
+      this.users = resp;
+      console.log(this.users);
+    });
   }
 
 }
