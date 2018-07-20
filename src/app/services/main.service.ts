@@ -26,6 +26,11 @@ export class MainService {
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
+  updateCondo(condo: ICondominium): Observable<ICondominium> {
+    return this.http.put(`http://192.168.1.4:4010/api/cuentamovimiento/updateMovimiento`, condo)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
   createUser(user: IUser) {
     return this.http.post(`http://192.168.1.4:4010/api/users/add`, user)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));

@@ -21,6 +21,12 @@ export class AdminComponent implements OnInit {
     }, err => console.log(err));
   }
 
+  submit() {
+    this.mainService.updateCondo(this.condominio).subscribe(() => {
+      console.log('Actualizado');
+    }, err => console.log(err));
+  }
+
   redirect(n: number) {
     switch (n) {
       case 0: this.router.navigateByUrl('/admin/paymentverify'); break;             // Paymentverify
