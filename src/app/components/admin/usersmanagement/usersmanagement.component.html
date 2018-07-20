@@ -33,7 +33,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of users">
+            <tr *ngFor="let item of users" class="my_link" [routerLink]="['/admin/usersmanagement/edituser/', item.usuarioId]">
               <th scope="row">{{item.email}}</th>
               <td>{{item.apellido}}</td>
               <td>{{item.nombre}}</td>
