@@ -1,8 +1,11 @@
 import { IContract, ICondominium } from '../interfaces';
 
 export class Contract implements IContract {
-    id: number;
-    numero_casa: number;
-    descripcion: string;
-    condominio: ICondominium;
+    constructor(
+        public id: number,
+        public numero_casa: number,
+        public descripcion: string,
+        public condominio: ICondominium
+    ) { }
+
 }

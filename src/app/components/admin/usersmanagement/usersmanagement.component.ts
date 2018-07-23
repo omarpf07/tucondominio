@@ -1,3 +1,4 @@
+import { Contract } from './../../../beans/classes/contract';
 import { Component, OnInit } from '@angular/core';
 import { IUser } from '../../../beans';
 import { AuthService } from '../../../services/auth.service';
@@ -25,6 +26,7 @@ export class UsersmanagementComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(1)]],
       lastName: ['', [Validators.required, Validators.minLength(1)]],
       isAdmin: ['', Validators.required],
+      houseNumber: ['', [Validators.required, Validators.minLength(1)]]
     });
   }
 
@@ -52,9 +54,9 @@ export class UsersmanagementComponent implements OnInit {
       this.getUsers();
       this.userCreationForm.reset();
       this.addUser = false;
-    }, err => {
-      console.log(err);
-      error => this.dialogsService.alert(error, 'Error!', true);
-    });
+    }, error => this.dialogsService.alert(error, 'Error!', true));
+    const contrato = new Contract(null, this.userCreationForm.controls['houseNumber'].value,
+      this.userCreationForm.controls['houseNumber'].value, null);
+    this.mainService.addContrato(contrato).subscribe(resp => { }, err => console.log(err));
   }
 }

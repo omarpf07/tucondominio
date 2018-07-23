@@ -25,7 +25,7 @@ const routes: Routes = [
     { path: 'admin/usersmanagement', component: UsersmanagementComponent, canActivate: [AuthGuard] },
     { path: 'admin/usersmanagement/edituser/:id', component: EdituserComponent, canActivate: [AuthGuard] },
     { path: 'allfees', component: AllfeesComponent, canActivate: [AuthGuard] },
-    { path: 'feepayment', component: FeepaymentComponent, canActivate: [AuthGuard] },
+    { path: 'feepayment/:id', component: FeepaymentComponent, canActivate: [AuthGuard] },
     { path: 'fee/:id', component: ViewfeeComponent, canActivate: [AuthGuard] },
     { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];

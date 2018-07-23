@@ -1,7 +1,8 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
-import { IUser, IMovements } from '../beans';
+import { IUser, IMovements, IFee, Contract } from '../beans';
 import { map, catchError } from 'rxjs/operators';
 import { ICondominium } from '../beans/interfaces/condominium';
 import { environment } from '../../environments/environment';
@@ -11,7 +12,7 @@ import { environment } from '../../environments/environment';
 })
 export class MainService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   getUsers(): Observable<IUser[]> {
     return this.http.get(`${environment.apiUrl}/api/users/all`).pipe(map(this.extractData), catchError(this.handleErrorObservable));
@@ -53,6 +54,16 @@ export class MainService {
 
   createGasto(gasto: IMovements): Observable<IMovements> {
     return this.http.post(`${environment.apiUrl}/cuentamovimiento/addMovimiento`, gasto)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
+  getCuotasById(): Observable<IFee[]> {
+    return this.http.get(`${environment.apiUrl}/api/cuota/allByUser?usuarioId=${this.auth.getUserId()}`).pipe(map(this.extractData),
+      catchError(this.handleErrorObservable));
+  }
+
+  addContrato(contrato: Contract) {
+    return this.http.post(`${environment.apiUrl}/api/contract/add`, contrato)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 

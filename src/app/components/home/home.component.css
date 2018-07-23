@@ -10,3 +10,9 @@
         display: none;
     }
 }
+
+.fixxx{
+    overflow-y: auto;
+    height: 22vh;
+    max-height: 22vh;
+}
