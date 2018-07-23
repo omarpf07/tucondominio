@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.displayName = this.auth.getUserDisplayName();
-    this.mainService.getUsers().subscribe(resp => {
+    this.mainService.getMorosos().subscribe(resp => {
       this.users = resp;
       console.log(this.users);
     }, error => this.dialogsService.alert(error, 'Error!', true));

@@ -17,7 +17,6 @@ import { UsersmanagementComponent } from './components/admin/usersmanagement/use
 import { PaymentverifyComponent } from './components/admin/paymentverify/paymentverify.component';
 import { ViewfeeComponent } from './components/fees/viewfee/viewfee.component';
 import { APP_ROUTING } from './app.routes';
-
 import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

@@ -4,14 +4,16 @@ import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dia
 import { AlertDialogComponent } from '../components//alert-dialog/alert-dialog.component';
 import { MatDialogRef, MatDialog } from '@angular/material';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class DialogsService {
   constructor(private dialog: MatDialog) { }
 
   public confirm(title?: string, message?: string): Observable<boolean> {
     let dialogRef: MatDialogRef<ConfirmDialogComponent>;
     dialogRef = this.dialog.open(ConfirmDialogComponent);
-    
     const titleToShow = ((title != null && title !== '') ? title : 'Warning!');
     const messageToShow = ((message != null && message !== '') ? message :
       'You have unsaved changes. Press <b>CANCEL</b> to go back and save these changes, or <b>OK</b> to lose these changes.');

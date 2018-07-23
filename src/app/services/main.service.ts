@@ -37,6 +37,10 @@ export class MainService {
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
+  getMorosos(): Observable<IUser[]> {
+    return this.http.get(`${environment.apiUrl}/api/cuota/allMorosos`).pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
   private handleErrorObservable(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
