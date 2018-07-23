@@ -22,28 +22,33 @@
     </div>
     <div class="row">
       <div class="col-md-10 offset-md-1">
-        <table class="table table-hover">
+        <table class="table table-hover" *ngIf="fees?.length > 0">
           <thead>
             <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Monto</th>
-              <th scope="col">Usuario</th>
-              <th scope="col">Codigo de transacción</th>
-              <th scope="col"></th>
+              <th scope=" col ">Id</th>
+              <th scope="col ">Fecha</th>
+              <th scope="col ">Monto</th>
+              <th scope="col ">Usuario</th>
+              <th scope="col ">Codigo de transacción</th>
+              <th scope="col "></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of fees">
-              <th scope="row">{{item.cuotaId}}</th>
+            <tr *ngFor="let item of fees ">
+              <th scope="row ">{{item.cuotaId}}</th>
               <td>{{item.fechaInicio}}</td>
               <td>{{item.cantidad}}</td>
               <td>{{item.contrato.usuario.nombre}} {{item.contrato.usuario.apellido}}</td>
               <td>{{item.codigoVerificacion}}</td>
-              <td><button type="submit" class="btn btn-success w-100" (click)="verifyFee(item.cuotaId)">Verificar</button></td>
+              <td>
+                <button type="submit " class="btn btn-success w-100 " (click)="verifyFee(item.cuotaId) ">Verificar</button>
+              </td>
             </tr>
           </tbody>
         </table>
+        <div *ngIf="fees?.length === 0">
+          <h4 class="text-center">No hay resultados para mostrar</h4>
+        </div>
       </div>
     </div>
   </div>
