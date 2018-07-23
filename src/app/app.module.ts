@@ -86,6 +86,10 @@ import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.com
     ConfirmDialogComponent,
     AlertDialogComponent
   ],
+  entryComponents: [
+    AlertDialogComponent,
+    ConfirmDialogComponent
+  ],
   imports: [
     BrowserModule,
     APP_ROUTING,
