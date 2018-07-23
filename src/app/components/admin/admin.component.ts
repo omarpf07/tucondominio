@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Condominium } from '../../beans/classes/condominium';
 import { MainService } from '../../services/main.service';
 import { DialogsService } from '../../services/dialogs.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,14 +13,17 @@ import { DialogsService } from '../../services/dialogs.service';
 export class AdminComponent implements OnInit {
   public condominio: Condominium;
   constructor(
-    private router: Router, private mainService: MainService, private dialogsService: DialogsService
+    private router: Router, private mainService: MainService, private dialogsService: DialogsService,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit() {
     this.mainService.getCondo().subscribe(resp => {
       this.condominio = resp;
       console.log(this.condominio);
-    }, error => this.dialogsService.alert(error, 'Error obteniendo la información del condominio', true));
+    }, error => this.dialogsService.alert(error, 'Error obteniendo la información del condominio', true), () => {
+      this.sharedService.condominio = this.condominio[0];
+    });
   }
 
   submit() {
