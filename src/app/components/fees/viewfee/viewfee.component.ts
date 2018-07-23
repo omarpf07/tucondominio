@@ -14,7 +14,7 @@ export class ViewfeeComponent implements OnInit {
   public cuota: IFee;
   public id: number;
 
-  constructor(private auth: AuthService, private mainService: MainService, private route: ActivatedRoute) { }
+  constructor(public auth: AuthService, private mainService: MainService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
