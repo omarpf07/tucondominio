@@ -36,13 +36,13 @@
               <th scope="row">{{ i + 1 }}</th>
               <td>{{item.fecha | date:"MM/dd/yyyy HH:mm" }}</td>
               <td>{{item.descripcion }}</td>
-              <td>{{item.cantidad | currency:'VEF':'symbol-narrow' }}</td>
+              <td [ngClass]="item.cantidad < 0 ? 'text-danger' : 'text-success'">{{item.cantidad | currency:'VEF':'symbol-narrow' }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="col-md-10 offset-md-1" *ngIf="movimientos?.length === 0">
-        <h4 class="text-center">No hay resultados para mostrar.</h4>
+      <div class=" col-md-10 offset-md-1 " *ngIf="movimientos?.length===0 ">
+        <h4 class="text-center ">No hay resultados para mostrar.</h4>
       </div>
     </div>
   </div>
