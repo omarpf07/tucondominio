@@ -22,7 +22,7 @@ export class AllfeesComponent implements OnInit {
     this.mainService.getCuotasById().subscribe(resp => {
       this.cuotas = resp;
       console.log(resp);
-    }, err => console.log(err));
+    }, error => this.dialogsService.alert(error, 'Error obteniendo la información de las cuotass', true));
   }
 
 }

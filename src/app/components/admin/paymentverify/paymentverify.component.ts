@@ -24,7 +24,7 @@ export class PaymentverifyComponent implements OnInit {
     this.mainService.getPendingFees().subscribe(resp => {
       this.fees = resp;
       console.log(this.fees);
-    }, error => this.dialogsService.alert(error, 'Error!', true));
+    }, error => this.dialogsService.alert(error, 'La cuota no pudo ser verificada', true));
   }
 
   getBack() {

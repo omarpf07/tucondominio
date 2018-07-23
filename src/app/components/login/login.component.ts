@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/home']);
     }, error => {
       console.log(error);
-      this.dialogsService.alert(error, 'Error!', true);
+      this.dialogsService.alert(error, 'Usuario y/o contraseña inválidos', true);
       this.loginForm.enable();
     });
   }
