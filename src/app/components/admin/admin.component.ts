@@ -29,7 +29,9 @@ export class AdminComponent implements OnInit {
   submit() {
     this.mainService.updateCondo(this.condominio).subscribe(() => {
       console.log('Actualizado');
-    }, error => this.dialogsService.alert(error, 'La información del condominio no pudo ser actualizada', true));
+    }, error => this.dialogsService.alert(error, 'La información del condominio no pudo ser actualizada', true), () => {
+      this.dialogsService.confirm('Alerta', 'Cambios realizados con exito.');
+    });
   }
 
   redirect(n: number) {
