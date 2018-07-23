@@ -4,6 +4,8 @@ import { MainService } from '../../../services/main.service';
 import { DialogsService } from '../../../services/dialogs.service';
 import { AuthService } from '../../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { SharedService } from '../../../services/shared.service';
+import { Condominium } from '../../../beans';
 
 @Component({
   selector: 'app-feepayment',
@@ -14,10 +16,20 @@ export class FeepaymentComponent implements OnInit {
 
   public pagarCuotaForm: FormGroup;
   public id: number;
+  public condominio: Condominium;
   constructor(private mainService: MainService, private dialogsService: DialogsService,
-    private fb: FormBuilder, private auth: AuthService, private route: ActivatedRoute) { }
+    private fb: FormBuilder, private auth: AuthService, private route: ActivatedRoute, private sharedService: SharedService) { }
 
   ngOnInit() {
+
+    if (this.sharedService.condominio === undefined) {
+      this.mainService.getCondo().subscribe(resp => {
+        this.condominio = resp[0];
+      }, error => this.dialogsService.alert(error, 'Error obteniendo la información del condominio', true), () => {
+        this.sharedService.condominio = this.condominio[0];
+      });
+    } else { this.condominio = this.sharedService.condominio; }
+
     this.pagarCuotaForm = this.fb.group({
       amount: ['', [Validators.required, Validators.minLength(1)]]
     });
@@ -26,6 +38,7 @@ export class FeepaymentComponent implements OnInit {
       this.id = +params['id'];
     });
   }
+
 
   onSubmit() {
     this.mainService.pagarCuota(this.id, this.pagarCuotaForm.controls['amount'].value).subscribe(res => {
