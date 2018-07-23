@@ -24,11 +24,23 @@ export class PaymentverifyComponent implements OnInit {
     this.mainService.getPendingFees().subscribe(resp => {
       this.fees = resp;
       console.log(this.fees);
-    }, error => this.dialogsService.alert(error, 'La cuota no pudo ser verificada', true));
+    }, error => this.dialogsService.alert(error, 'Error obteniendo la lista de cuotas', true));
   }
 
   getBack() {
     this.router.navigate(['admin/panel']);
   }
 
+  verifyFee(cuotaId: number) {
+    let transactionCode: string;
+
+    this.mainService.verifiyFees(cuotaId).subscribe(resp => {
+      console.log(cuotaId);
+      transactionCode = resp.codigoVerificacion;
+    }, error => this.dialogsService.alert(error, 'La cuota no pudo ser verificada', true),
+      () => {
+        this.dialogsService.confirm('Pago verificado', `Código de transacción: ${transactionCode}`);
+        this.fees.splice(this.fees.findIndex(f => f.cuotaId === cuotaId), 1);
+      });
+  }
 }

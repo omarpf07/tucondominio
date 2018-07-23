@@ -10,10 +10,10 @@
               </button>
             </div>
             <div class="col-md-6">
-              <h3 class="text-center">Pagos por verificar</h3>
+              <h3 class="text-center mt-2">Pagos por verificar</h3>
             </div>
             <div class="col-md-3">
-              <button type="button" class="btn btn-primary float-right" (click)="addUser = true">Registrar Usuario</button>
+              <!-- <button type="button" class="btn btn-primary float-right" (click)="addUser = true">Registrar Usuario</button> -->
             </div>
           </div>
           <hr>
@@ -29,7 +29,8 @@
               <th scope="col">Fecha</th>
               <th scope="col">Monto</th>
               <th scope="col">Usuario</th>
-              <th scope="col">Codigo de verificación</th>
+              <th scope="col">Codigo de transacción</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -37,8 +38,9 @@
               <th scope="row">{{item.cuotaId}}</th>
               <td>{{item.fechaInicio}}</td>
               <td>{{item.cantidad}}</td>
-              <td>{{item.contrato}}</td>
+              <td>{{item.contrato.usuario.nombre}} {{item.contrato.usuario.apellido}}</td>
               <td>{{item.codigoVerificacion}}</td>
+              <td><button type="submit" class="btn btn-success w-100" (click)="verifyFee(item.cuotaId)">Verificar</button></td>
             </tr>
           </tbody>
         </table>

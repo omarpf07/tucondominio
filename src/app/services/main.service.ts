@@ -89,8 +89,13 @@ export class MainService {
   }
 
   getPendingFees(): Observable<Fee[]> {
-    return this.http.get(`../../assets/mocos/cuotas.json`).pipe(map(this.extractData),
-      catchError(this.handleErrorObservable)); 
+    return this.http.get(`${environment.apiUrl}/api/cuota/allPending`).pipe(map(this.extractData),
+      catchError(this.handleErrorObservable));
+  }
+
+  verifiyFees(cuotaId: number): Observable<Fee> {
+    return this.http.get(`${environment.apiUrl}/api/cuota/verificarCuota?cuotaId=${cuotaId}`).pipe(map(this.extractData),
+      catchError(this.handleErrorObservable));
   }
 
   private handleErrorObservable(error: HttpErrorResponse) {
