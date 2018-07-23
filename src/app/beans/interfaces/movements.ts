@@ -5,5 +5,6 @@ export interface IMovements {
     cantidad: number;
     fecha: string;
     realizado: boolean;
+    descripcion: string;
     usuario: IUser;
 }

@@ -1,4 +1,4 @@
-<div class="row" *ngIf="!addTransaction">
+<div class="row animated fadeIn" *ngIf="!addTransaction">
   <div class="col-md">
     <div class="row">
       <div class="col-md">
@@ -21,36 +21,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10 offset-md-1">
+      <div class="col-md-10 offset-md-1" *ngIf="gastos?.length === 0">
         <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Fecha del gasto</th>
+              <th scope="col">Descripcion del gasto</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
+            <tr *ngFor="let item of gastos; let i = index;" class="my_link">
+              <th scope="row">{{ i }}</th>
+              <td>{{item.apellido}}</td>
+              <td>{{item.nombre}}</td>
             </tr>
           </tbody>
         </table>
+      </div>
+      <div class="col-md-10 offset-md-1" *ngIf="gastos?.length > 0">
+        <h4 class="text-center">No hay resultados para mostrar.</h4>
       </div>
     </div>
   </div>
@@ -59,20 +49,33 @@
 <div class="row h-100 animated fadeIn" *ngIf="addTransaction">
   <div class="col-md-6 offset-md-3">
     <div class="d-flex w-100 h-100 align-items-center justify-content-center">
-      <form class="w-100">
+      <form class="w-100" [formGroup]="gastoCreationForm" (ngSubmit)="onSubmit()">
+        <button type="button" class="btn btn-primary" (click)="getBack2()">
+          <i class="fas fa-arrow-left"></i> Atras
+        </button>
         <h5 class="text-center">Datos del Nuevo Gasto</h5>
         <div class="form-group row">
           <div class="col-md">
-            <label for="exampleFormControlInput1">Monto Gastado</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="1000000">
+            <div class="row"></div>
+            <label for="exampleFormControlInput1">Monto Gastado Bsf:</label>
+            <input formControlName="amount" type="number" class="form-control" id="exampleFormControlInput1" placeholder="1000000">
+          </div>
+          <div class="col-md">
+            <div class="row"></div>
+            <label for="exampleFormControlInput1">Descripcion del gasto:</label>
+            <input formControlName="description" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Pago a personal de vigilancia">
           </div>
         </div>
         <div class="form-group row">
           <div class="col-md">
-            <p-calendar tabindex="0" [disabledDates]="invalidDates" [disabledDays]="[0,6]" readonlyInput="true"></p-calendar>
+            <mat-form-field class="w-100">
+              <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" formControlName="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary w-100 text-center">Añadir Gasto</button>
+        <button type="submit" class="btn btn-primary w-100 text-center" [disabled]="gastoCreationForm.invalid">Añadir Gasto</button>
       </form>
     </div>
   </div>

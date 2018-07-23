@@ -66,6 +66,7 @@ import {
 import { EdituserComponent } from './components/admin/usersmanagement/edituser/edituser.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
+import { AllfeesComponent } from './components/fees/allfees/allfees.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.com
     MovementsComponent,
     EdituserComponent,
     ConfirmDialogComponent,
-    AlertDialogComponent
+    AlertDialogComponent,
+    AllfeesComponent
   ],
   entryComponents: [
     AlertDialogComponent,

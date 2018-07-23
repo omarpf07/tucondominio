@@ -7,5 +7,6 @@ export class Movements implements IMovements {
         public cantidad: number,
         public fecha: string,
         public realizado: boolean,
+        public descripcion: string,
         public usuario: IUser) { }
 }

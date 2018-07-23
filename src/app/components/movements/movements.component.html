@@ -13,36 +13,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10 offset-md-1">
+      <div class="col-md-10 offset-md-1" *ngIf="movimientos?.length === 0">
         <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Fecha del gasto</th>
+              <th scope="col">Descripcion del gasto</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
+            <tr *ngFor="let item of movimientos; let i = index;" class="my_link">
+              <th scope="row">{{ i }}</th>
+              <td>{{item.apellido}}</td>
+              <td>{{item.nombre}}</td>
             </tr>
           </tbody>
         </table>
+      </div>
+      <div class="col-md-10 offset-md-1" *ngIf="movimientos?.length > 0">
+        <h4 class="text-center">No hay resultados para mostrar.</h4>
       </div>
     </div>
   </div>

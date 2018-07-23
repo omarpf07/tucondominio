@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md">
+    <div class="row">
+      <div class="col-md">
+        <div class="w-100 pt-3">
+          <div class="row">
+            <div class="col-md">
+              <h3>Cuotas de {{userName}}</h3>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1" *ngIf="cuotas?.length > 0">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Fecha de la cuota</th>
+              <th scope="col">Precio de la cuota</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cuotas; let i = index;" class="my_link">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{item.fechaInicio}}</td>
+              <td>{{item.cantidad}}</td>
+              <td><button class="btn btn-success" [routerLink]="['feepayment/:id', item.cuotaId]">Pagar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-10 offset-md-1" *ngIf="cuotas?.length === 0">
+        <h4 class="text-center">No hay resultados para mostrar.</h4>
+      </div>
+    </div>
+  </div>
+</div>
