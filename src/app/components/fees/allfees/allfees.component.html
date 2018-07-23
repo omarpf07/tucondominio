@@ -34,8 +34,8 @@
               <td>{{item.fechaInicio | date:"MM/dd/yyyy HH:mm" }}</td>
               <td>{{item.cantidad}}</td>
               <td>
-                <button class="btn" [ngClass]="{'btn-info': item.fechaPago === null && item.codigoVerificacion === null , 'btn-primary': item.codigoVerificacion !== null }"
-                  [routerLink]="['/feepayment/', item.cuotaId]" [disabled]="item.codigoVerificacion !== null">{{ item.fechaPago === null && item.codigoVerificacion === null ? 'Pagar' : 'Verificando' }}</button>
+                <button class="btn" [ngClass]="{'btn-success': item.fechaPago !== null && item.codigoVerificacion !== null , 'btn-primary': item.codigoVerificacion !== null}"
+                  [routerLink]="['/feepayment/', item.cuotaId]" [disabled]="item.codigoVerificacion !== null">{{ item.fechaPago !== null && item.codigoVerificacion !== null ? 'Pagado' : 'Verificando' }}</button>
               </td>
             </tr>
           </tbody>
