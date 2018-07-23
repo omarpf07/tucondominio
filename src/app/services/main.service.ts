@@ -1,3 +1,4 @@
+import { IContract } from './../beans/interfaces/contract';
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -53,7 +54,7 @@ export class MainService {
   }
 
   createGasto(gasto: IMovements): Observable<IMovements> {
-    return this.http.post(`${environment.apiUrl}/cuentamovimiento/addMovimiento`, gasto)
+    return this.http.post(`${environment.apiUrl}/api/cuentamovimiento/addMovimiento`, gasto)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
@@ -62,10 +63,16 @@ export class MainService {
       catchError(this.handleErrorObservable));
   }
 
-  addContrato(contrato: Contract) {
+  addContrato(contrato: Contract): Observable<IContract> {
     return this.http.post(`${environment.apiUrl}/api/contract/add`, contrato)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
+
+  pagarCuota(id: number, verificationCode: number): Observable<IFee> {
+    return this.http.get(`${environment.apiUrl}/api/cuota/pagarCuota?cuotaId=${id}&codigoVerificacion=${verificationCode}`)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
 
   getPendingFees(): Observable<Fee[]> {
     return this.http.get(`../../assets/mocos/cuotas.json`).pipe(map(this.extractData),

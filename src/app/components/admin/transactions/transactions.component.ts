@@ -7,6 +7,7 @@ import { IMovements } from '../../../beans/interfaces/movements';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Movements } from '../../../beans/classes/movements';
 import { User } from '../../../beans/classes/user';
+import { Condominium } from '../../../beans/classes/condominium';
 
 @Component({
   selector: 'app-transactions',

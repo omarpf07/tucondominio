@@ -28,7 +28,10 @@
               <th scope="row">{{ i + 1 }}</th>
               <td>{{item.fechaInicio}}</td>
               <td>{{item.cantidad}}</td>
-              <td><button class="btn btn-success" [routerLink]="['feepayment/:id', item.cuotaId]">Pagar</button></td>
+              <td>
+                <button class="btn" [ngClass]="{'btn-info': item.fechaPago === null && item.codigoVerificacion === null , 'btn-primary': item.codigoVerificaion !== null }"
+                  [routerLink]="['/feepayment/', item.cuotaId]" [disabled]="item.codigoVerificacion !== null">{{ item.fechaPago === null && item.codigoVerificacion === null ? 'Pagar' : 'Verificando' }}</button>
+              </td>
             </tr>
           </tbody>
         </table>
