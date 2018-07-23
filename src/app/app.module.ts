@@ -88,6 +88,10 @@ import { AllfeesComponent } from './components/fees/allfees/allfees.component';
     AlertDialogComponent,
     AllfeesComponent
   ],
+  entryComponents: [
+    AlertDialogComponent,
+    ConfirmDialogComponent
+  ],
   imports: [
     BrowserModule,
     APP_ROUTING,
