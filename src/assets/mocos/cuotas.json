@@ -1,0 +1,162 @@
+[
+  {
+    "cuotaId": 1,
+    "fechaInicio": "1/30/2018",
+    "fechaPago": "12/17/2017",
+    "codigoVerificacion": "58232-0104",
+    "contrato": "kkmieciak0",
+    "cantidad": 400054
+  },
+  {
+    "cuotaId": 2,
+    "fechaInicio": "3/31/2018",
+    "fechaPago": "5/6/2018",
+    "codigoVerificacion": "51270-116",
+    "contrato": "tbronot1",
+    "cantidad": 95735
+  },
+  {
+    "cuotaId": 3,
+    "fechaInicio": "3/5/2018",
+    "fechaPago": "10/18/2017",
+    "codigoVerificacion": "50988-285",
+    "contrato": "thagard2",
+    "cantidad": 303902
+  },
+  {
+    "cuotaId": 4,
+    "fechaInicio": "5/2/2018",
+    "fechaPago": "7/29/2017",
+    "codigoVerificacion": "68084-743",
+    "contrato": "khamilton3",
+    "cantidad": 804446
+  },
+  {
+    "cuotaId": 5,
+    "fechaInicio": "5/17/2018",
+    "fechaPago": "7/13/2018",
+    "codigoVerificacion": "36987-2742",
+    "contrato": "smenci4",
+    "cantidad": 373388
+  },
+  {
+    "cuotaId": 6,
+    "fechaInicio": "6/5/2018",
+    "fechaPago": "9/23/2017",
+    "codigoVerificacion": "62584-984",
+    "contrato": "golochan5",
+    "cantidad": 3402
+  },
+  {
+    "cuotaId": 7,
+    "fechaInicio": "12/9/2017",
+    "fechaPago": "11/20/2017",
+    "codigoVerificacion": "42291-599",
+    "contrato": "keglinton6",
+    "cantidad": 181421
+  },
+  {
+    "cuotaId": 8,
+    "fechaInicio": "10/1/2017",
+    "fechaPago": "7/6/2018",
+    "codigoVerificacion": "0069-0112",
+    "contrato": "sburlingame7",
+    "cantidad": 792079
+  },
+  {
+    "cuotaId": 9,
+    "fechaInicio": "10/2/2017",
+    "fechaPago": "7/6/2018",
+    "codigoVerificacion": "0703-5657",
+    "contrato": "myanele8",
+    "cantidad": 437867
+  },
+  {
+    "cuotaId": 10,
+    "fechaInicio": "9/26/2017",
+    "fechaPago": "10/8/2017",
+    "codigoVerificacion": "0093-5554",
+    "contrato": "candrivel9",
+    "cantidad": 855808
+  },
+  {
+    "cuotaId": 11,
+    "fechaInicio": "6/4/2018",
+    "fechaPago": "1/29/2018",
+    "codigoVerificacion": "52426-120",
+    "contrato": "dtaborda",
+    "cantidad": 56017
+  },
+  {
+    "cuotaId": 12,
+    "fechaInicio": "1/30/2018",
+    "fechaPago": "9/26/2017",
+    "codigoVerificacion": "76084-1001",
+    "contrato": "pbartkiewiczb",
+    "cantidad": 275927
+  },
+  {
+    "cuotaId": 13,
+    "fechaInicio": "9/21/2017",
+    "fechaPago": "7/4/2018",
+    "codigoVerificacion": "41250-101",
+    "contrato": "tbraggerc",
+    "cantidad": 699236
+  },
+  {
+    "cuotaId": 14,
+    "fechaInicio": "6/9/2018",
+    "fechaPago": "12/13/2017",
+    "codigoVerificacion": "68405-022",
+    "contrato": "scargend",
+    "cantidad": 287737
+  },
+  {
+    "cuotaId": 15,
+    "fechaInicio": "2/26/2018",
+    "fechaPago": "10/6/2017",
+    "codigoVerificacion": "49643-309",
+    "contrato": "gdonnele",
+    "cantidad": 973013
+  },
+  {
+    "cuotaId": 16,
+    "fechaInicio": "5/20/2018",
+    "fechaPago": "4/13/2018",
+    "codigoVerificacion": "63868-192",
+    "contrato": "mcorrieaf",
+    "cantidad": 112222
+  },
+  {
+    "cuotaId": 17,
+    "fechaInicio": "11/24/2017",
+    "fechaPago": "11/14/2017",
+    "codigoVerificacion": "35000-027",
+    "contrato": "mpasfieldg",
+    "cantidad": 600367
+  },
+  {
+    "cuotaId": 18,
+    "fechaInicio": "5/10/2018",
+    "fechaPago": "7/12/2018",
+    "codigoVerificacion": "42851-032",
+    "contrato": "opiddlesdenh",
+    "cantidad": 45584
+  },
+  {
+    "cuotaId": 19,
+    "fechaInicio": "3/6/2018",
+    "fechaPago": "4/26/2018",
+    "codigoVerificacion": "0904-5801",
+    "contrato": "nemlyni",
+    "cantidad": 650841
+  },
+  {
+    "cuotaId": 20,
+    "fechaInicio": "12/21/2017",
+    "fechaPago": "8/4/2017",
+    "codigoVerificacion": "68788-9797",
+    "contrato": "edeanj",
+    "cantidad": 833186
+  }
+]

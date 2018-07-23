@@ -19,13 +19,13 @@ export class AdminComponent implements OnInit {
     this.mainService.getCondo().subscribe(resp => {
       this.condominio = resp;
       console.log(this.condominio);
-    }, error => this.dialogsService.alert(error, 'Error!', true));
+    }, error => this.dialogsService.alert(error, 'Error obteniendo la información del condominio', true));
   }
 
   submit() {
     this.mainService.updateCondo(this.condominio).subscribe(() => {
       console.log('Actualizado');
-    }, error => this.dialogsService.alert(error, 'Error!', true));
+    }, error => this.dialogsService.alert(error, 'La información del condominio no pudo ser actualizada', true));
   }
 
   redirect(n: number) {

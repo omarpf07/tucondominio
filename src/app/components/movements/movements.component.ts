@@ -18,7 +18,7 @@ export class MovementsComponent implements OnInit {
   ngOnInit() {
     this.mainService.getMovimientos().subscribe(resp => {
       this.movimientos = resp;
-    }, err => console.log(err));
+    }, error => this.dialogsService.alert(error, 'Error obteniendo la lista de transacciones', true));
   }
 
 }

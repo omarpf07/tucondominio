@@ -38,7 +38,7 @@ export class UsersmanagementComponent implements OnInit {
     this.mainService.getUsers().subscribe(resp => {
       this.users = resp;
       console.log(this.users);
-    }, error => this.dialogsService.alert(error, 'Error!', true));
+    }, error => this.dialogsService.alert(error, 'Error obteniendo la lista de usuarios', true));
   }
 
   getBack() {
@@ -54,9 +54,10 @@ export class UsersmanagementComponent implements OnInit {
       this.getUsers();
       this.userCreationForm.reset();
       this.addUser = false;
-    }, error => this.dialogsService.alert(error, 'Error!', true));
+    }, error => this.dialogsService.alert(error, 'Error creando usuario', true));
     const contrato = new Contract(null, this.userCreationForm.controls['houseNumber'].value,
       this.userCreationForm.controls['houseNumber'].value, null);
-    this.mainService.addContrato(contrato).subscribe(resp => { }, err => console.log(err));
+    this.mainService.addContrato(contrato).
+      subscribe(resp => { }, error => this.dialogsService.alert(error, 'Error creando contrato', true));
   }
 }

@@ -23,11 +23,11 @@ export class HomeComponent implements OnInit {
     this.mainService.getMorosos().subscribe(resp => {
       this.users = resp;
       console.log(this.users);
-    }, error => this.dialogsService.alert(error, 'Error!', true));
+    }, error => this.dialogsService.alert(error, 'Error obteniendo la lista de usuarios', true));
     this.mainService.getCondo().subscribe(resp => {
       this.condo = resp;
       console.log(this.condo);
-    }, error => this.dialogsService.alert(error, 'Error!', true));
+    }, error => this.dialogsService.alert(error, 'Error obteniendo la información del condominio', true));
     this.mainService.getAllCuotasByUserId().subscribe(resp => {
       this.cuotas = resp;
       console.log(this.cuotas);
