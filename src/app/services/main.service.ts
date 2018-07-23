@@ -23,12 +23,12 @@ export class MainService {
   }
 
   getCondo(): Observable<ICondominium> {
-    return this.http.get(`${environment.apiUrl}/api condominio/all`)
+    return this.http.get(`${environment.apiUrl}/api/condominio/all`)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
   updateCondo(condo: ICondominium): Observable<ICondominium> {
-    return this.http.put(`${environment.apiUrl}/api/cuentamovimiento/updateMovimiento`, condo)
+    return this.http.put(`${environment.apiUrl}/api/condominio/update`, condo)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
@@ -49,6 +49,11 @@ export class MainService {
   getMovimientos(): Observable<IMovements[]> {
     return this.http.get(`${environment.apiUrl}/api/cuentamovimiento/all`).pipe(map(this.extractData),
       catchError(this.handleErrorObservable));
+  }
+
+  createGasto(gasto: IMovements): Observable<IMovements> {
+    return this.http.post(`${environment.apiUrl}/cuentamovimiento/addMovimiento`, gasto)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
   private handleErrorObservable(error: HttpErrorResponse) {

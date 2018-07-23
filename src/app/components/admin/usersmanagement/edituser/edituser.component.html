@@ -15,38 +15,41 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label class="col-form-label" for="inputNombre">Nombre</label>
-            <input type="text" [(ngModel)]="nombre" class="form-control" id="inputNombre" placeholder="Nombre">
+            <input type="text" [(ngModel)]="user.nombre" class="form-control" id="inputNombre" placeholder="Nombre">
           </div>
           <div class="form-group col-md-6">
             <label class="col-form-label" for="inputApellido">Apellido</label>
-            <input type="text" class="form-control" [(ngModel)]="apellido" id="inputApellido" placeholder="Apellido">
+            <input type="text" class="form-control" [(ngModel)]="user.nombre" id="inputApellido" placeholder="Apellido">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label class="col-form-label" for="inputUsuario">Correo</label>
-            <input type="email" [(ngModel)]="usuario" class="form-control" id="inputUsuario" placeholder="Usuario">
+            <input type="email" [(ngModel)]="user.correo" class="form-control" id="inputUsuario" placeholder="Usuario">
           </div>
           <div class="form-group col-md-6">
-            <label class="col-form-label" for="inputPassword">Contrasena</label>
-            <input type="password" class="form-control" [(ngModel)]="password" id="inputPassword" placeholder="Contrasena">
+            <label class="col-form-label" for="inputPassword">Contraseña</label>
+            <input type="text" class="form-control" [(ngModel)]="password" id="inputPassword" placeholder="Contrasena">
           </div>
         </div>
         <div class="form-group row">
           <div class="col-md">
             <span>¿El usuario es Administrador? *</span>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="isAdmin" id="exampleRadios1" [value]="true" checked>
+              <input class="form-check-input" type="radio" name="isAdmin" id="exampleRadios1" [(ngModel)]="user.admin" [value]="true" checked>
               <label class="form-check-label" for="exampleRadios1">
                 Si
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="isAdmin" id="exampleRadios2" [value]="false">
+              <input class="form-check-input" type="radio" name="isAdmin" id="exampleRadios2" [(ngModel)]="user.admin" [value]="false">
               <label class="form-check-label" for="exampleRadios2">
                 No
               </label>
             </div>
+          </div>
+          <div class="col-md h-100">
+              <mat-slide-toggle [(ngModel)]="user.estado">Activar o desactivar el usuario</mat-slide-toggle>
           </div>
         </div>
         <div class="form-group row">
@@ -57,7 +60,7 @@
         </div>
         <div class="form-row w-100">
           <div class="w-100">
-            <button class="float-right btn btn-success my-2">Guardar</button>
+            <button class="float-right btn btn-success my-2" type="button" (click)="actualizar()">Guardar</button>
           </div>
         </div>
       </div>

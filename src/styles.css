@@ -1,7 +1,8 @@
 @import 'assets/styles/bootstrap.min.css';
 @import 'assets/styles/animate.css';
 @import 'assets/fonts/fonts.css';
-@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 h1,h2,h3,h4,h5,h6{
     font-family: robotoTitle !important;
 }

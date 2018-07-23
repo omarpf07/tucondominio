@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { IUser } from '../../../../beans';
 
 @Component({
   selector: 'app-edituser',
@@ -8,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class EdituserComponent implements OnInit {
 
-  nombre: any;        // Nombre
-  apellido: any;      // Apellido
-  usuario: any;       // Nombre de Usuario
-  password: any;       // Contrasena
-
-  constructor(private router: Router) { }
+  public user: IUser;
+  public password: string;
+  public id: number;
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe( params => {
+      this.id = +params['id'];
+    });
   }
 
   goBack() {
