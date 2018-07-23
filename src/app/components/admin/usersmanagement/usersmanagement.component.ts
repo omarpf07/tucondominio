@@ -5,6 +5,7 @@ import { MainService } from '../../../services/main.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../../beans/classes/user';
 import { Router } from '@angular/router';
+import { DialogsService } from '../../../services/dialogs.service';
 
 @Component({
   selector: 'app-usersmanagement',
@@ -15,7 +16,9 @@ export class UsersmanagementComponent implements OnInit {
   public addUser = false;
   public users: IUser[];
   public userCreationForm: FormGroup;
-  constructor(private auth: AuthService, private mainService: MainService, private fb: FormBuilder, private router: Router) {
+
+  constructor(private auth: AuthService, private mainService: MainService, private fb: FormBuilder,
+    private router: Router, private dialogsService: DialogsService) {
     this.userCreationForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, Validators.minLength(1)]],
       password: ['', [Validators.required, Validators.minLength(3)]],
@@ -33,7 +36,7 @@ export class UsersmanagementComponent implements OnInit {
     this.mainService.getUsers().subscribe(resp => {
       this.users = resp;
       console.log(this.users);
-    });
+    }, error => this.dialogsService.alert(error, 'Error!', true));
   }
 
   getBack() {
@@ -51,6 +54,7 @@ export class UsersmanagementComponent implements OnInit {
       this.addUser = false;
     }, err => {
       console.log(err);
+      error => this.dialogsService.alert(error, 'Error!', true);
     });
   }
 }

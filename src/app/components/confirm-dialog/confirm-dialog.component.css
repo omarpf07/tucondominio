@@ -1,0 +1,12 @@
+.confirmHeader {
+    margin-right: -24px; 
+    background-color:orange;
+  }
+  .confirmContentMessage {
+    max-width: 280px; 
+    text-align: justify;
+  }
+  .confirmMessage {
+    text-align: justify; 
+    word-wrap: break-word;
+  }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from './../../services/auth.service';
-import { MainService } from './../../services/main.service';
+import { AuthService } from '../../services/auth.service';
+import { MainService } from '../../services/main.service';
+import { DialogsService } from '../../services/dialogs.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
   constructor(private auth: AuthService, private fb: FormBuilder, private mainService: MainService,
-    private router: Router) { }
+    private router: Router, private dialogsService: DialogsService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -26,14 +27,15 @@ export class LoginComponent implements OnInit {
   onSubmit(form: FormGroup) {
     const values = form.value;
     this.loginForm.disable();
-      this.mainService.logIn(values.username, values.password).subscribe(data => {
-        this.auth.setAllUserData(data);
-        this.auth.isLoggedInBehavior.next(true);
-        this.router.navigate(['/home']);
-      }, error => {
-        console.log(error);
-        this.loginForm.enable();
-      });
+    this.mainService.logIn(values.username, values.password).subscribe(data => {
+      this.auth.setAllUserData(data);
+      this.auth.isLoggedInBehavior.next(true);
+      this.router.navigate(['/home']);
+    }, error => {
+      console.log(error);
+      this.dialogsService.alert(error, 'Error!', true)
+      this.loginForm.enable();
+    });
   }
 
 }

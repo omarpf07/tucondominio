@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { TableModule } from 'primeng/table';
@@ -23,8 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CovalentLayoutModule } from '@covalent/core/layout';
-import { CovalentStepsModule } from '@covalent/core/steps';
+// import { CovalentLayoutModule } from '@covalent/core/layout/covalent-core-layout';
+// import { CovalentStepsModule } from '@covalent/core/steps/covalent-core-steps';
 /* any other core modules */
 // (optional) Additional Covalent Modules imports
 import { CovalentHttpModule } from '@covalent/http';
@@ -66,6 +65,8 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import { EdituserComponent } from './components/admin/usersmanagement/edituser/edituser.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,9 @@ import { EdituserComponent } from './components/admin/usersmanagement/edituser/e
     FeepaymentComponent,
     ViewfeeComponent,
     MovementsComponent,
-    EdituserComponent
+    EdituserComponent,
+    ConfirmDialogComponent,
+    AlertDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -93,8 +96,8 @@ import { EdituserComponent } from './components/admin/usersmanagement/edituser/e
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CovalentLayoutModule,
-    CovalentStepsModule,
+    // CovalentLayoutModule,
+    // CovalentStepsModule,
     CovalentHttpModule,
     CovalentMarkdownModule,
     CovalentHighlightModule,

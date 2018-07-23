@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Condominium } from '../../beans/classes/condominium';
 import { MainService } from '../../services/main.service';
+import { DialogsService } from '../../services/dialogs.service';
 
 @Component({
   selector: 'app-admin',
@@ -11,20 +12,20 @@ import { MainService } from '../../services/main.service';
 export class AdminComponent implements OnInit {
   public condominio: Condominium;
   constructor(
-    private router: Router, private mainService: MainService
+    private router: Router, private mainService: MainService, private dialogsService: DialogsService
   ) { }
 
   ngOnInit() {
     this.mainService.getCondo().subscribe(resp => {
       this.condominio = resp;
       console.log(this.condominio);
-    }, err => console.log(err));
+    }, error => this.dialogsService.alert(error, 'Error!', true));
   }
 
   submit() {
     this.mainService.updateCondo(this.condominio).subscribe(() => {
       console.log('Actualizado');
-    }, err => console.log(err));
+    }, error => this.dialogsService.alert(error, 'Error!', true));
   }
 
   redirect(n: number) {

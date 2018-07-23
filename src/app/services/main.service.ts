@@ -4,6 +4,7 @@ import { throwError, Observable } from 'rxjs';
 import { IUser } from '../beans';
 import { map, catchError } from 'rxjs/operators';
 import { ICondominium } from '../beans/interfaces/condominium';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,26 +14,26 @@ export class MainService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<IUser[]> {
-    return this.http.get(`http://192.168.1.4:4010/api/users/all`).pipe(map(this.extractData), catchError(this.handleErrorObservable));
+    return this.http.get(`${environment.apiUrl}/api/users/all`).pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
   logIn(email: string, pass: string): Observable<IUser> {
-    return this.http.get(`http://192.168.1.4:4010/api/users/login?email=${email}&contraseña=${pass}`)
+    return this.http.get(`${environment.apiUrl}/api/users/login?email=${email}&contraseña=${pass}`)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
   getCondo(): Observable<ICondominium> {
-    return this.http.get(`http://192.168.1.4:4010/api/condominio/all`)
+    return this.http.get(`${environment.apiUrl}/api condominio/all`)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
   updateCondo(condo: ICondominium): Observable<ICondominium> {
-    return this.http.put(`http://192.168.1.4:4010/api/cuentamovimiento/updateMovimiento`, condo)
+    return this.http.put(`${environment.apiUrl}/api/cuentamovimiento/updateMovimiento`, condo)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
   createUser(user: IUser) {
-    return this.http.post(`http://192.168.1.4:4010/api/users/add`, user)
+    return this.http.post(`${environment.apiUrl}/api/users/add`, user)
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 

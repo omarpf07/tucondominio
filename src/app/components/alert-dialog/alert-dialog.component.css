@@ -1,0 +1,11 @@
+.alertHeader {
+    margin-right: -24px;
+  }
+  .alertContentMessage {
+    max-width: 280px; 
+    text-align: justify;
+  }
+  .alertMessage {
+    text-align: justify; 
+    word-wrap: break-word;
+  }
