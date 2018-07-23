@@ -13,7 +13,10 @@
               <h3 class="text-center">Gastos del condominio</h3>
             </div>
             <div class="col-md-3">
-              <button type="button" class="btn btn-primary float-right" (click)="addTransaction = true">Registrar Gasto</button>
+              <div class="btn-group float-right" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" (click)="addTransaction = true">Registrar Gasto</button>
+                <button type="button" class="btn btn-primary" (click)="print()">Imprimir</button>
+              </div>
             </div>
           </div>
           <hr>
@@ -21,25 +24,27 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10 offset-md-1" *ngIf="gastos?.length === 0">
+      <div class="col-md-10 offset-md-1" *ngIf="gastos?.length > 0">
         <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Fecha del gasto</th>
               <th scope="col">Descripcion del gasto</th>
+              <th scope="col">Monto del gasto</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of gastos; let i = index;" class="my_link">
-              <th scope="row">{{ i }}</th>
-              <td>{{item.apellido}}</td>
-              <td>{{item.nombre}}</td>
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{item.fecha | date:"MM/dd/yyyy HH:mm" }}</td>
+              <td>{{item.descripcion}}</td>
+              <td>{{item.cantidad | currency:'VEF':'symbol-narrow' }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="col-md-10 offset-md-1" *ngIf="gastos?.length > 0">
+      <div class="col-md-10 offset-md-1" *ngIf="gastos?.length === 0">
         <h4 class="text-center">No hay resultados para mostrar.</h4>
       </div>
     </div>

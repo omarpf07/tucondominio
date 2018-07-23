@@ -98,6 +98,17 @@ export class MainService {
       catchError(this.handleErrorObservable));
   }
 
+
+  getUserById(id: number): Observable<IUser> {
+    return this.http.get(`${environment.apiUrl}/api/users/byId?usuarioId=${id}`)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
+  updateUser(user: IUser): Observable<IUser> {
+    return this.http.put(`${environment.apiUrl}/api/users/update`, user)
+      .pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
   private handleErrorObservable(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

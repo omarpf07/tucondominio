@@ -26,4 +26,8 @@ export class NotpayedfeesComponent implements OnInit {
     }, err => console.log(err));
   }
 
+  print() {
+    window.print();
+  }
+
 }

@@ -1,44 +1,49 @@
 <div class="row">
-    <div class="col-md">
-      <div class="row">
-        <div class="col-md">
-          <div class="w-100 pt-3">
-            <div class="row">
-              <div class="col-md">
-                <h3>Cuotas por pagar de {{userName}}</h3>
+  <div class="col-md">
+    <div class="row">
+      <div class="col-md">
+        <div class="w-100 pt-3">
+          <div class="row">
+            <div class="col-md-9">
+              <h3>Cuotas por pagar de {{userName}}</h3>
+            </div>
+            <div class="col-md-3">
+              <div class="btn-group float-right" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" (click)="print()">Imprimir</button>
               </div>
             </div>
-            <hr>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-10 offset-md-1" *ngIf="cuotas?.length > 0">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Fecha de la cuota</th>
-                <th scope="col">Precio de la cuota</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of cuotas; let i = index;" class="my_link">
-                <th scope="row">{{ i + 1 }}</th>
-                <td>{{item.fechaInicio | date:"MM/dd/yyyy HH:mm" }}</td>
-                <td>{{item.cantidad}}</td>
-                <td>
-                  <button class="btn" [ngClass]="{'btn-info': item.fechaPago === null && item.codigoVerificacion === null , 'btn-primary': item.codigoVerificaion !== null }"
-                    [routerLink]="['/feepayment/', item.cuotaId]" [disabled]="item.codigoVerificacion !== null">{{ item.fechaPago === null && item.codigoVerificacion === null ? 'Pagar' : 'Verificando' }}</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-10 offset-md-1" *ngIf="cuotas?.length === 0">
-          <h4 class="text-center">No hay resultados para mostrar.</h4>
+          <hr>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1" *ngIf="cuotas?.length > 0">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Fecha de la cuota</th>
+              <th scope="col">Precio de la cuota</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cuotas; let i = index;" class="my_link">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{item.fechaInicio | date:"MM/dd/yyyy HH:mm" }}</td>
+              <td>{{item.cantidad}}</td>
+              <td>
+                <button class="btn" [ngClass]="{'btn-info': item.fechaPago === null && item.codigoVerificacion === null , 'btn-primary': item.codigoVerificaion !== null }"
+                  [routerLink]="['/feepayment/', item.cuotaId]" [disabled]="item.codigoVerificacion !== null">{{ item.fechaPago === null && item.codigoVerificacion === null ? 'Pagar' : 'Verificando' }}</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-10 offset-md-1" *ngIf="cuotas?.length === 0">
+        <h4 class="text-center">No hay resultados para mostrar.</h4>
+      </div>
+    </div>
   </div>
+</div>

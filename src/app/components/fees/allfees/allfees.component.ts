@@ -25,4 +25,7 @@ export class AllfeesComponent implements OnInit {
     }, error => this.dialogsService.alert(error, 'Error obteniendo la información de las cuotass', true));
   }
 
+  print() {
+    window.print();
+  }
 }

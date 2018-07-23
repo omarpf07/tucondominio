@@ -46,18 +46,30 @@ export class UsersmanagementComponent implements OnInit {
   }
 
   createUser() {
+    this.create();
+  }
+
+  adduUser() {
+    this.create();
+    this.addUser = false;
+  }
+
+  create() {
+    const contrato = new Contract(null, this.userCreationForm.controls['houseNumber'].value,
+      this.userCreationForm.controls['houseNumber'].value, null, null);
     const user = new User(null, this.userCreationForm.controls['firstName'].value, this.userCreationForm.controls['lastName'].value,
       this.userCreationForm.controls['email'].value,
-      this.userCreationForm.controls['password'].value, this.userCreationForm.controls['isAdmin'].value, true, null, null);
+      this.userCreationForm.controls['password'].value, this.userCreationForm.controls['isAdmin'].value, true, null, [contrato]);
+    console.log(user);
     this.mainService.createUser(user).subscribe(() => {
       console.log(user);
       this.getUsers();
       this.userCreationForm.reset();
       this.addUser = false;
     }, error => this.dialogsService.alert(error, 'Error creando usuario', true));
-    const contrato = new Contract(null, this.userCreationForm.controls['houseNumber'].value,
-      this.userCreationForm.controls['houseNumber'].value, null);
-    this.mainService.addContrato(contrato).
-      subscribe(resp => { }, error => this.dialogsService.alert(error, 'Error creando contrato', true));
+  }
+
+  print() {
+    window.print();
   }
 }

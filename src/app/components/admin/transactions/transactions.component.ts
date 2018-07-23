@@ -28,19 +28,26 @@ export class TransactionsComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.obtainGastos();
+  }
+
+  obtainGastos() {
     this.mainService.getGastos().subscribe(resp => {
       this.gastos = resp;
       console.log(this.gastos);
     }, error => this.dialogsService.alert(error, 'Error!', true));
   }
-
   onSubmit() {
+    const monto = this.gastoCreationForm.controls['amount'].value * -1;
     const usuario = new User(this.auth.getUserId(), null, null, null, null, null, null, null, null);
-    const gasto = new Movements(null, this.gastoCreationForm.controls['amount'].value,
+    const gasto = new Movements(null, monto,
       this.gastoCreationForm.controls['date'].value, true, this.gastoCreationForm.controls['description'].value, usuario);
     this.mainService.createGasto(gasto).subscribe(resp => {
       console.log(resp);
-    }, err => console.log(err));
+    }, err => console.log(err),
+      () => {
+        this.getBack2();
+      });
   }
 
   getBack() {
@@ -48,6 +55,11 @@ export class TransactionsComponent implements OnInit {
   }
 
   getBack2() {
+    this.obtainGastos();
     this.addTransaction = false;
+  }
+
+  print() {
+    window.print();
   }
 }

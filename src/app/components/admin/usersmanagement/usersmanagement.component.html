@@ -13,7 +13,10 @@
               <h3 class="text-center">Usuarios del condominio</h3>
             </div>
             <div class="col-md-3">
-              <button type="button" class="btn btn-primary float-right" (click)="addUser = true">Registrar Usuario</button>
+              <div class="btn-group float-right" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary float-right" (click)="addUser = true">Registrar Usuario</button>
+                <button type="button" class="btn btn-primary" (click)="print()">Imprimir</button>
+              </div>
             </div>
           </div>
           <hr>
@@ -59,9 +62,6 @@
             <label for="exampleFormControlInput1">Correo *</label>
             <input type="email" class="form-control" formControlName="email" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
           </div>
-          <div class="invalid-feedback" *ngIf="userCreationForm.controls['firstName'].invalid">
-            Please choose a username
-          </div>
           <div class="col-md-6">
             <label for="exampleFormControlInput2">Contraseña *</label>
             <input type="text" class="form-control" formControlName="password" id="exampleFormControlInput2" placeholder="Contraseña mas de tres digitos">
@@ -102,7 +102,7 @@
           </div>
         </div>
         <button type="submit" class="btn btn-primary w-100 text-center" [disabled]="userCreationForm.invalid">Crear Usuario</button>
-        <button type="button" class="btn btn-danger w-100 text-center mt-1" (click)="addUser = false">Cancelar</button>
+        <button type="button" class="btn btn-danger w-100 text-center mt-1" (click)="adduUser()">Cancelar</button>
 
       </form>
     </div>

@@ -43,4 +43,8 @@ export class PaymentverifyComponent implements OnInit {
         this.fees.splice(this.fees.findIndex(f => f.cuotaId === cuotaId), 1);
       });
   }
+
+  print() {
+    window.print();
+  }
 }

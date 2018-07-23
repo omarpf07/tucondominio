@@ -11,7 +11,7 @@ import { DialogsService } from '../../services/dialogs.service';
 })
 export class HomeComponent implements OnInit {
 
-  public displayName: string;
+  public user: IUser;
   public users: IUser[];
   public condo: ICondominium;
   public cuotas: IFee[];
@@ -19,21 +19,21 @@ export class HomeComponent implements OnInit {
     private dialogsService: DialogsService) { }
 
   ngOnInit() {
-    this.displayName = this.auth.getUserDisplayName();
     this.mainService.getMorosos().subscribe(resp => {
       this.users = resp;
-      console.log(this.users);
     }, error => this.dialogsService.alert(error, 'Error obteniendo la lista de usuarios', true));
     this.mainService.getCondo().subscribe(resp => {
       this.condo = resp;
-      console.log(this.condo);
     }, error => this.dialogsService.alert(error, 'Error obteniendo la información del condominio', true));
     this.mainService.getAllCuotasByUserId().subscribe(resp => {
       this.cuotas = resp;
-      console.log(this.cuotas);
     }, err => {
 
     });
+    this.mainService.getUserById(this.auth.getUserId()).subscribe( resp => {
+      this.user = resp;
+      console.log(this.user);
+    }, err => console.log(err));
   }
 
 }

@@ -19,7 +19,7 @@
             <tr *ngFor="let item of users">
               <th scope="row" class="text-danger">{{item?.contrato.usuario.apellido}}</th>
               <td class="text-danger">{{item?.contrato.usuario.nombre}}</td>
-              <td class="text-danger">{{item?.fechaInicio}}</td>
+              <td class="text-danger">{{item?.fechaInicio | date:"MM/dd/yyyy HH:mm" }}</td>
             </tr>
           </tbody>
         </table>
@@ -35,7 +35,7 @@
         <div class="card h-100">
           <img class="user-img" src="assets/img/placeholder-user.jpeg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title text-center">{{ displayName }}</h5>
+            <h5 class="card-title text-center">{{ user?.nombre + ' ' + user?.apellido }}</h5>
             <h6 class="card-subtitle text-center">Estado de deuda</h6>
             <p class="text-bold text-danger text-center">Moroso</p>
           </div>
