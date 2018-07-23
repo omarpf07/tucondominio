@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
-import { IUser } from '../beans';
+import { IUser, IMovements } from '../beans';
 import { map, catchError } from 'rxjs/operators';
 import { ICondominium } from '../beans/interfaces/condominium';
 import { environment } from '../../environments/environment';
@@ -39,6 +39,16 @@ export class MainService {
 
   getMorosos(): Observable<IUser[]> {
     return this.http.get(`${environment.apiUrl}/api/cuota/allMorosos`).pipe(map(this.extractData), catchError(this.handleErrorObservable));
+  }
+
+  getGastos(): Observable<IMovements[]> {
+    return this.http.get(`${environment.apiUrl}/api/cuentamovimiento/allGastos`).pipe(map(this.extractData),
+      catchError(this.handleErrorObservable));
+  }
+
+  getMovimientos(): Observable<IMovements[]> {
+    return this.http.get(`${environment.apiUrl}/api/cuentamovimiento/all`).pipe(map(this.extractData),
+      catchError(this.handleErrorObservable));
   }
 
   private handleErrorObservable(error: HttpErrorResponse) {

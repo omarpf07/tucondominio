@@ -1,0 +1,12 @@
+.px-20 {
+    padding: 0 20rem;
+}
+
+.h-textarea {    
+    max-height: 200px;
+    min-height: 40px;
+}
+
+.w100 {
+    width: 100%;
+}

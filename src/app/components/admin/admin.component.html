@@ -44,15 +44,15 @@
       <div class="col-md-4"></div>
     </div>
     <div class="row" style="height: 5%">
-      <div class="col-md-4 text-center">
-        <button (click)="redirect(0)" routerLink="" class="btn btn-primary my-2">Verificar pagos</button>
+      <div class="col-md-3"></div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" (click)="redirect(0)" class="btn btn-info">Verificar pagos</button>
+          <button type="button" (click)="redirect(1)" class="btn btn-info">Transacciones</button>
+          <button type="button" (click)="redirect(2)" class="btn btn-info">Administrar usuarios</button>
+        </div>
       </div>
-      <div class="col-md-4 text-center">
-        <button (click)="redirect(1)" class="btn btn-primary my-2">Transacciones</button>
-      </div>
-      <div class="col-md-4 text-center">
-        <button (click)="redirect(2)" class="btn btn-primary my-2">Administrar usuarios</button>
-      </div>
+      <div class="col-md-3"></div>
     </div>
   </div>
 </div>
