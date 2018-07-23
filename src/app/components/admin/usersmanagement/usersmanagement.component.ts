@@ -54,7 +54,7 @@ export class UsersmanagementComponent implements OnInit {
       this.addUser = false;
     }, err => {
       console.log(err);
-      error => this.dialogsService.alert(error, 'Error!', true);
+      this.dialogsService.alert(err, 'Error!', true);
     });
   }
 }
