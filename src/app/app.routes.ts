@@ -13,6 +13,7 @@ import { NotAuthGuard } from './services/not-auth.guard';
 import { AuthGuard } from './services/auth.guard';
 import { EdituserComponent } from './components/admin/usersmanagement/edituser/edituser.component';
 import { AllfeesComponent } from './components/fees/allfees/allfees.component';
+import { NotpayedfeesComponent } from './components/fees/notpayedfees/notpayedfees.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent, canActivate: [NotAuthGuard] },
@@ -25,6 +26,7 @@ const routes: Routes = [
     { path: 'admin/usersmanagement', component: UsersmanagementComponent, canActivate: [AuthGuard] },
     { path: 'admin/usersmanagement/edituser/:id', component: EdituserComponent, canActivate: [AuthGuard] },
     { path: 'allfees', component: AllfeesComponent, canActivate: [AuthGuard] },
+    { path: 'notpaidfees', component: NotpayedfeesComponent, canActivate: [AuthGuard] },
     { path: 'feepayment/:id', component: FeepaymentComponent, canActivate: [AuthGuard] },
     { path: 'fee/:id', component: ViewfeeComponent, canActivate: [AuthGuard] },
     { path: '', pathMatch: 'full', redirectTo: 'login' }

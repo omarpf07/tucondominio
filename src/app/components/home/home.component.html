@@ -12,12 +12,14 @@
             <tr>
               <th scope="col">Apellido</th>
               <th scope="col">Nombre</th>
+              <th scope="col">Moroso desde</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of users">
-              <th scope="row" class="text-danger">{{item?.apellido}}</th>
-              <td class="text-danger">{{item?.nombre}}</td>
+              <th scope="row" class="text-danger">{{item?.contrato.usuario.apellido}}</th>
+              <td class="text-danger">{{item?.contrato.usuario.nombre}}</td>
+              <td class="text-danger">{{item?.fechaInicio}}</td>
             </tr>
           </tbody>
         </table>
@@ -53,8 +55,8 @@
             <h6 class="card-subtitle text-center">
               Fondos del condominio:
             </h6>
-            <h6 class="card-subtitle text-center mt-1 mx-auto">Bs.
-              <span class="text-success w-100">{{ condo[0].fondos }}</span>
+            <h6 class="card-subtitle text-center mt-1 mx-auto">
+              <span class="text-success w-100">{{ condo[0].fondos | currency:'VEF':'symbol-narrow' }}</span>
             </h6>
           </div>
         </div>
@@ -66,14 +68,8 @@
           <div class="card-body">
             <h5 class="card-title text-center">Pagos realizados</h5>
             <ul class="nav fixxx">
-              <li class="nav-item">
-                <a class="nav-link my_link" routerLink="/fee/1">10/18 - Bs. 30.000</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">10/18 - Bs. 30.000</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">10/18 - Bs. 30.000</a>
+              <li class="nav-item" *ngFor="let item of cuotas">
+                <a class="nav-link my_link" [routerLink]="['/fee/', item.cuotaId]">{{ item.fechaInicio | date:"MM/dd/yyyy" }}</a>
               </li>
             </ul>
           </div>

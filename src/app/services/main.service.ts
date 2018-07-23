@@ -73,6 +73,20 @@ export class MainService {
       .pipe(map(this.extractData), catchError(this.handleErrorObservable));
   }
 
+  get1CuotaById(id: number): Observable<IFee> {
+    return this.http.get(`${environment.apiUrl}/api/cuota/byId?cuotaId=${id}`).pipe(map(this.extractData),
+      catchError(this.handleErrorObservable));
+  }
+
+  getcuotasSinPagar(): Observable<IFee[]> {
+    return this.http.get(`${environment.apiUrl}/api/cuota/noPagasByUser?usuarioId=${this.auth.getUserId()}`).pipe(map(this.extractData),
+      catchError(this.handleErrorObservable));
+  }
+
+  getAllCuotasByUserId(): Observable<IFee[]> {
+    return this.http.get(`${environment.apiUrl}/api/cuota/allByUser?usuarioId=${this.auth.getUserId()}`).pipe(map(this.extractData),
+      catchError(this.handleErrorObservable));
+  }
 
   private handleErrorObservable(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { IUser, ICondominium } from '../../beans';
+import { IUser, ICondominium, IFee } from '../../beans';
 import { MainService } from '../../services/main.service';
 import { DialogsService } from '../../services/dialogs.service';
 
@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   public displayName: string;
   public users: IUser[];
   public condo: ICondominium;
+  public cuotas: IFee[];
   constructor(private auth: AuthService, private mainService: MainService,
     private dialogsService: DialogsService) { }
 
@@ -27,6 +28,12 @@ export class HomeComponent implements OnInit {
       this.condo = resp;
       console.log(this.condo);
     }, error => this.dialogsService.alert(error, 'Error!', true));
+    this.mainService.getAllCuotasByUserId().subscribe(resp => {
+      this.cuotas = resp;
+      console.log(this.cuotas);
+    }, err => {
+
+    });
   }
 
 }
