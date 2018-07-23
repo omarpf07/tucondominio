@@ -1,9 +1,11 @@
 import { IContract } from './contract';
 
 export interface IFee {
-    id: number;
-    cantidad: number;
-    pagado: boolean;
-    fecha: string;
+    cuotaId: number;
     contrato: IContract;
+    cantidad: number;
+    fechaInicio: Date;
+    fechaPago: Date;
+    codigoVerificacion: string;
+
 }
